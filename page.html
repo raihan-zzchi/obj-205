@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj 505</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ffe4e1;
+        }
+        h1 {
+            color: #d9534f;
+        }
+        #timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            color: #d63384;
+        }
+        .time-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80px;
+        }
+        .label {
+            font-size: 14px;
+            color: #d63384;
+            margin-top: 5px;
+        }
+        
+        /* Polaroid Gallery */
+        .polaroid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom per baris */
+        gap: 20px;
+        justify-items: center;
+        margin-top: 40px;
+    }
+
+        .polaroid {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            width: 200px;
+            transition: transform 0.3s;
+        }
+        .polaroid:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .caption {
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d63384;
+        }
+        @media (max-width: 768px) {
+            .polaroid-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar lebih kecil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .polaroid-container {
+                grid-template-columns: repeat(1, 1fr); /* 1 kolom untuk layar sangat kecil */
+            }
+        }
+
+
+        /* Letter Section */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+    .letter {
+        background: #faf0e6; /* Warna seperti kertas */
+        padding: 40px;
+        border-radius: 10px;
+        width: 60%;
+        margin: 50px auto;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), 
+                    inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+        text-align: left;
+        font-family: 'Dancing Script', cursive;
+        font-size: 20px;
+        line-height: 1.8;
+        border: 1px solid #d4af87; /* Warna emas lembut seperti pinggiran kertas */
+        transform: rotate(-2deg); /* Sedikit miring agar terlihat lebih natural */
+        transition: transform 0.3s ease-in-out;
+        position: relative;
+    }
+
+    .letter:hover {
+        transform: rotate(0deg) scale(1.02); /* Sedikit lebih besar saat di-hover */
+    }
+
+    .letter::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/aged-paper.png'); /* Tekstur kertas */
+        opacity: 0.2;
+    }
+
+    .letter h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .letter p {
+        margin-bottom: 15px;
+    }
+
+    .letter::after {
+        content: "";
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        width: 80px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.1);
+        transform: rotate(-2deg);
+        opacity: 0.2;
+    }
+
+    </style>
+</head>
+<body>
+
+    <h1 data-aos="fade-down" data-aos-duration="1000">How long have we been together? 💕</h1>
+    <div id="timer" data-aos="fade-up" data-aos-duration="1000">
+        <div class="time-box">
+            <div id="years">0</div>
+            <div class="label">Years</div>
+        </div>
+        <div class="time-box">
+            <div id="months">0</div>
+            <div class="label">Months</div>
+        </div>
+        <div class="time-box">
+            <div id="days">0</div>
+            <div class="label">Days</div>
+        </div>
+        <div class="time-box">
+            <div id="hours">0</div>
+            <div class="label">Hrs</div>
+        </div>
+        <div class="time-box">
+            <div id="minutes">0</div>
+            <div class="label">Mins</div>
+        </div>
+        <div class="time-box">
+            <div id="seconds">0</div>
+            <div class="label">Secs</div>
+        </div>
+    </div>
+
+    <!-- Polaroid Gallery -->
+    <h2 data-aos="fade-up" data-aos-duration="1000">💖 Our Memories 💖</h2>
+    <div class="polaroid-container">
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="img/firstdate.jpeg" alt="Memory 1">
+            <div class="caption">First Date 💑</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+            <img src="img/yourbirthday.jpeg" alt="Memory 2">
+            <div class="caption">Your Birthday 🎉</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+            <img src="img/wedding.jpeg" alt="Memory 3">
+            <div class="caption">Imagine Wedding With You ✨</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+            <img src="img/goofy.jpeg" alt="Memory 4">
+            <div class="caption">Goofy Moments 😆</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+            <img src="img/aduotot.jpeg" alt="Memory 5">
+            <div class="caption">Flexing Competition 💪</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+            <img src="img/hereyes.jpeg" alt="Memory 6">
+            <div class="caption">Her Eyes 😭</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <img src="img/takingpicture.jpeg" alt="Memory 7">
+            <div class="caption">Taking a picture of you 📸</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="700">
+            <img src="img/hiking.jpeg" alt="Memory 8">
+            <div class="caption">Climbing a mountain together 🏔️</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="800">
+            <img src="img/mad2.jpeg" alt="Memory 9">
+            <div class="caption">Coming to you when you're angry 😅</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="900">
+            <img src="img/makan.jpeg" alt="Memory 10">
+            <div class="caption">Eating simply 🍴</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="1000">
+            <img src="img/perpus.jpeg" alt="Memory 11">
+            <div class="caption">Reading together at the library 📖</div>
+        </div>
+        <div class="polaroid" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="1100">
+            <img src="img/basis.jpeg" alt="Memory 12">
+            <div class="caption">Basis Pride 😎</div>
+        </div>
+    </div>
+    <h1 data-aos="fade-up" data-aos-duration="1000"> And there are still many beautiful moments that went unrecorded, as well as beautiful moments yet to come </h1>
+
+    <!-- Love Letter -->
+    <div class="letter" data-aos="fade-up" data-aos-duration="1000">
+        <h2>💌 A Letter for You 💌</h2>
+        <p>
+            My Love, 💖<br><br>
+            Happy Valentine’s Day! 🌹<br><br>
+            I just want to take a moment to tell you how much you mean to me. Every day with you feels special, but today, I want to remind you just how grateful I am to have you in my life. 🥰<br><br>
+            Before you came along, Valentine’s Day was just another day for me. I used to see people celebrating with their loved ones and wonder what that felt like. But now, I don’t have to wonder anymore—because I have you. You’ve brought so much happiness, love, and warmth into my life, and I can’t imagine my days without you. ❤️‍🔥<br><br>
+            I love the way you make me smile, the way you understand me, and the way you make even the simplest moments feel magical. With you, every day feels like a celebration, and I hope we can keep making beautiful memories together—not just today, but always. 🎉💑<br><br>
+            So, here’s to us—to our love, our journey, and all the amazing moments that are still waiting for us. No matter what, I want you to know that you’re deeply loved, today and every day. 💞<br><br>
+            Happy Valentine’s Day, my love! 💘<br><br>
+            Forever yours,<br>
+            Raihan Rasyid Alkhairi
+        </p>
+    </div>
+
+     <!-- Backsound -->
+     <audio id="background-music" loop>
+        <source src="sound/song2.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        function updateTimer() {
+            const startDate = new Date("2024-08-03T00:00:00");
+            const now = new Date();
+            
+            let diff = Math.floor((now - startDate) / 1000);
+            
+            const years = Math.floor(diff / (3600 * 24 * 365));
+            diff %= 3600 * 24 * 365;
+            const months = Math.floor(diff / (3600 * 24 * 30));
+            diff %= 3600 * 24 * 30;
+            const days = Math.floor(diff / (3600 * 24));
+            diff %= 3600 * 24;
+            const hours = Math.floor(diff / 3600);
+            diff %= 3600;
+            const minutes = Math.floor(diff / 60);
+            const seconds = diff % 60;
+            
+            document.getElementById("years").textContent = years;
+            document.getElementById("months").textContent = months;
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+        
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Backsound Play on Interaction
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById("background-music");
+            document.body.addEventListener("click", function () {
+                if (audio.paused) {
+                    audio.play().catch(error => console.log("Autoplay failed:", error));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

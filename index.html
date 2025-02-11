@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj 505</title>
+    <style>
+        /* ===== General Style ===== */
+    body {
+        font-family: Arial, sans-serif;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #fae1dd;
+        margin: 0;
+    }
+
+    /* ===== Valentine Animation ===== */
+    .container {
+        position: relative;
+    }
+
+    .valentines {
+        position: relative;
+        top: 50px;
+        cursor: pointer;
+        animation: up 3s linear infinite;
+    }
+
+    .envelope {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        background: #f08080;
+        display: grid;
+        place-items: center;
+    }
+
+    .envelope::before {
+        content: '';
+        position: absolute;
+        width: 212px;
+        height: 212px;
+        background: #f08080;
+        transform: rotate(45deg);
+        top: -105px;
+        left: 44px;
+        border-radius: 30px 0 0 0;
+    }
+
+    .front {
+        position: absolute;
+        border-right: 180px solid #f4978e;
+        border-top: 95px solid transparent;
+        border-bottom: 100px solid transparent;
+        left: 120px;
+        top: 5px;
+        width: 0;
+        height: 0;
+        z-index: 10;
+    }
+
+    .front::before {
+        position: absolute;
+        content: '';
+        border-left: 300px solid #fda996;
+        border-top: 195px solid transparent;
+        left: -120px;
+        top: -95px;
+    }
+
+    .card {
+        position: relative;
+        width: 250px;
+        height: 180px;
+        background: #fff;
+        border-radius: 2px;
+        display: grid;
+        place-items: center;
+        transition: 1s;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border: 2px solid #003049;
+        border-style: dashed;
+    }
+
+    .valentines:hover .card {
+        transform: translateY(-100px);
+    }
+
+    .card .text {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 28px;
+        text-align: center;
+        line-height: 25px;
+        color: #003049;
+    }
+
+    .card .heart {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        background: red;
+        bottom: 20px;
+        transform: rotate(45deg);
+        border-radius: 50% 0 0 50%;
+    }
+
+    .card .heart::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: red;
+        border-radius: 0 50% 50% 0;
+        right: 0;
+        transform: rotate(-90deg);
+        transform-origin: top;
+    }
+
+    .card .heart::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: red;
+        right: -18px;
+    }
+
+    @keyframes up {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-30px);
+        }
+    }
+
+    .valentines::before {
+        content: '';
+        position: absolute;
+        width: 330px;
+        height: 25px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, .3);
+        top: 265px;
+        left: -15px;
+        animation: scale 3s linear infinite;
+    }
+
+    @keyframes scale {
+        0%, 100% {
+            transform: scaleX(1);
+        }
+        50% {
+            transform: scaleX(.85);
+        }
+    }
+
+    /* ===== Safe (Brankas) Styling ===== */
+    .safe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .safe-frame {
+            background: #ffd1dc;
+            padding: 20px;
+            border-radius: 15px;
+            border: 5px solid #ff85a2;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: popIn 0.5s ease;
+        }
+
+        /* Safe Box */
+        .safe {
+            background: #ffb6c1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            width: 250px;
+        }
+
+        .safe h2 {
+            margin-bottom: 10px;
+            color: #ff5c8a;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        /* Password Screen */
+        .safe-screen input {
+            width: 80%;
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+            background: white;
+            color: #ff5c8a;
+            border: 2px solid #ff85a2;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 15px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        /* Keypad */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .keypad button {
+            background: #ff85a2;
+            color: white;
+            font-size: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', cursive;
+            transition: 0.3s;
+        }
+
+        .keypad button:hover {
+            background: #ff5c8a;
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes popIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="valentines" onclick="openSafe()">
+            <div class="envelope">
+                <div class="card">
+                    <div class="text">Happy <br> Valentine's <br> Day</div>
+                    <div class="heart"></div>
+                </div>
+            </div>
+            <div class="front"></div>
+        </div>
+    </div>
+    
+    <div class="safe-container" id="safeContainer">
+        <div class="safe-frame">
+            <div class="safe">
+                <h2>Masukkan Kode</h2>
+                <div class="safe-screen">
+                    <input type="password" id="safePassword" placeholder="Enter PIN" readonly>
+                </div>
+                <div class="keypad">
+                    <button onclick="enterNumber(1)">1</button>
+                    <button onclick="enterNumber(2)">2</button>
+                    <button onclick="enterNumber(3)">3</button>
+                    <button onclick="enterNumber(4)">4</button>
+                    <button onclick="enterNumber(5)">5</button>
+                    <button onclick="enterNumber(6)">6</button>
+                    <button onclick="enterNumber(7)">7</button>
+                    <button onclick="enterNumber(8)">8</button>
+                    <button onclick="enterNumber(9)">9</button>
+                    <button onclick="clearPassword()">⟲</button>
+                    <button onclick="enterNumber(0)">0</button>
+                    <button onclick="checkPassword()">✔</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSafe() {
+            document.getElementById('safeContainer').style.display = 'flex';
+        }
+
+        function enterNumber(num) {
+            let input = document.getElementById('safePassword');
+            if (input.value.length < 4) {
+                input.value += num;
+            }
+        }
+
+        function clearPassword() {
+            document.getElementById('safePassword').value = '';
+        }
+
+        function checkPassword() {
+            let password = document.getElementById('safePassword').value;
+            if (password === '3824') {
+                window.location.href = "page.html"; // Ganti dengan halaman tujuan
+            } else {
+                alert('Password salah!');
+            }
+        }
+
+    </script>
+</body>
+</html>
